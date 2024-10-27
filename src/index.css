@@ -15,6 +15,11 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+input {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  color: #56555C;
+}
+
 body {
   margin: 0;
   display: flex;
@@ -23,9 +28,19 @@ body {
   min-height: 100vh;
 }
 
-h1 {
-  font-size: 3.2em;
+.title {
+  font-size: 28px;
   line-height: 1.1;
+  font-weight: semibold;
+  color: white;
+  margin-right: 24px;
+}
+
+.header-2 {
+  font-size: 21px;
+  line-height: 1.1;
+  font-weight: 500;
+  color: white;
 }
 
 @media (prefers-color-scheme: light) {
