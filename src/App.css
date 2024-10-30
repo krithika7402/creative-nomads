@@ -1,42 +1,20 @@
-#root {
-  max-width: 1400px;
-  max-height: 100vh;
-  margin: 0;
-  padding: 0.5rem 3rem;
-  overflow: hidden !important;
-}
-
+/* App.css */
 .app-container {
   width: 100%;
   height: 100vh;
   overflow: hidden;
 }
 
-.main-layout {
+.app-content {
   display: flex;
-  height: calc(100vh - 70px);
-  margin-top: 70px;
+  height: calc(100vh - 70px);  /* Subtract header height */
+  margin-top: 70px;  /* Account for fixed header */
 }
 
 .main-content {
-  margin-left: 240px;
-  width: calc(100% - 240px);
+  flex: 1;
+  margin-left: 280px;  /* Sidebar width */
   overflow-y: auto;
-  padding: 20px 24px;
-}
-
-.header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 70px;
-  z-index: 100;
-  background: white;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+  padding: 20px 20px;
+  margin-right: 0rem;
 }
