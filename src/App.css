@@ -7,14 +7,14 @@
 
 .app-content {
   display: flex;
-  height: calc(100vh - 70px);  /* Subtract header height */
-  margin-top: 70px;  /* Account for fixed header */
+  height: calc(100vh - 70px);
+  margin-top: 70px;  
 }
 
 .main-content {
   flex: 1;
-  margin-left: 280px;  /* Sidebar width */
+  margin-left: 280px;  
   overflow-y: auto;
-  padding: 20px 20px;
+  padding: 20px 20px 0 20px;
   margin-right: 0rem;
 }

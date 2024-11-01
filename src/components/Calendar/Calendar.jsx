@@ -1,6 +1,6 @@
-// components/Calendar/Calendar.jsx
+// Calendar.jsx
+import './Calendar.css'
 import { ChevronRight, Plus, Pencil, Trash2, MoreHorizontal } from 'lucide-react';
-import './Calendar.css';
 
 const Calendar = () => {
   const dates = [
@@ -16,7 +16,7 @@ const Calendar = () => {
   const statusCards = [
     { title: 'To-Do', count: '20', color: '#E2F5FF', textColor: '#76BBFF' },
     { title: 'In-Progress', count: '15', color: '#E9E7FF', textColor: '#7978CB' },
-    { title: 'Complete', count: '03', color: '#DFF9E3', textColor: '#4ADE80' },
+    { title: 'Complete', count: '03', color: '#DFF9E3', textColor: '#4ADE80' }
   ];
 
   const tasks = [
@@ -26,7 +26,7 @@ const Calendar = () => {
       completed: true,
       subtasks: [
         { text: "Donate Rs. 500 to the charity", completed: true },
-        { text: "Donate Rs. 500 to the charity", completed: true },
+        { text: "Donate Rs. 500 to the charity", completed: true }
       ],
       tags: [
         { text: "Donations", color: "#FFE4B5" },
@@ -41,7 +41,7 @@ const Calendar = () => {
       subtasks: [
         { text: "Start with 100", completed: true },
         { text: "Complete 250", completed: false },
-        { text: "Reach 400", completed: false },
+        { text: "Reach 400", completed: false }
       ],
       tags: [
         { text: "Sport", color: "#E9E7FF" },
@@ -85,6 +85,7 @@ const Calendar = () => {
             key={index} 
             className={`date-card ${date.isActive ? 'active' : ''}`}
           >
+            <div className="date-indicator"></div>
             <span className="day">{date.day}</span>
             <span className="weekday">{date.weekday}</span>
           </div>
@@ -111,7 +112,7 @@ const Calendar = () => {
       {/* Tasks Section */}
       <div className="tasks-section">
         <div className="tasks-header">
-          <h2>Tasks for the day</h2>
+          <h3>Tasks for the day</h3>
           <div className="header-buttons">
             <button className="add-button">
               <Plus size={24} color="#fff" />
