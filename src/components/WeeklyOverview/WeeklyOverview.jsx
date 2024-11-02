@@ -1,4 +1,4 @@
-import chart from "../../assets/bar.svg"
+import chart from "../../assets/bar.svg";
 import {
   LineChart,
   Line,
@@ -11,8 +11,79 @@ import {
 import "./WeeklyOverview.css";
 import arrow from "../../assets/arrow.svg";
 import book from "../../assets/book.svg";
+import { useState } from "react";
+
+const CustomTooltip = ({ active, payload, chartType, coordinate }) => {
+  // Return null if not active, no payload, or no chartType (means not hovering on a dot)
+  if (!active || !payload || !payload.length || !chartType) return null;
+
+  const value = payload.find((p) => p.dataKey === chartType)?.value;
+  const backgroundColor = chartType === "line1" ? "#FF69B4" : "#87CEEB";
+  const isTopLine = chartType === "line1";
+
+  return (
+    <div
+      className="custom-tooltip"
+      style={{
+        background: backgroundColor,
+        padding: "4px 16px",
+        borderRadius: "8px",
+        boxShadow: "0 4px 20px rgba(0, 0, 0, 0.1)",
+        position: "absolute",
+        left: coordinate?.x || 0,
+        top: (isTopLine ? coordinate?.y - 50 : coordinate?.y + 20) || 0,
+        transform: "translateX(-50%)",
+        pointerEvents: "none",
+      }}
+    >
+      <div
+        style={{
+          color: "white",
+          fontWeight: 700,
+          fontSize: "12px",
+          textAlign: "center",
+        }}
+      >
+        {value}
+      </div>
+      {isTopLine && (
+        <div
+          style={{
+            position: "absolute",
+            bottom: "-6px",
+            left: "50%",
+            transform: "translateX(-50%)",
+            width: 0,
+            height: 0,
+            borderLeft: "6px solid transparent",
+            borderRight: "6px solid transparent",
+            borderTop: `6px solid ${backgroundColor}`,
+          }}
+        />
+      )}
+      {!isTopLine && (
+        <div
+          style={{
+            position: "absolute",
+            top: "-6px",
+            left: "50%",
+            transform: "translateX(-50%)",
+            width: 0,
+            height: 0,
+            borderLeft: "6px solid transparent",
+            borderRight: "6px solid transparent",
+            borderBottom: `6px solid ${backgroundColor}`,
+          }}
+        />
+      )}
+    </div>
+  );
+};
 
 const WeeklyOverview = () => {
+  const [activeLineType, setActiveLineType] = useState(null);
+  const [activeCoordinate, setActiveCoordinate] = useState(null);
+
   const data = [
     { name: "Mon", line1: 30, line2: 20 },
     { name: "Tues", line1: 25, line2: 15 },
@@ -28,10 +99,9 @@ const WeeklyOverview = () => {
         <div className="header-section">
           <h3>Weekly Overview</h3>
           <button className="chart-button">
-            <img src={chart} alt="chart"/>
+            <img src={chart} alt="chart" />
           </button>
         </div>
-
         <div className="content-wrapper">
           <div className="stats-section">
             <div className="number-stats">
@@ -49,7 +119,7 @@ const WeeklyOverview = () => {
             </div>
 
             <button className="open-tasks-button">
-              <img src={book} alt="book"/>
+              <img src={book} alt="book" />
               <span>OPEN TASKS</span>
             </button>
           </div>
@@ -63,9 +133,23 @@ const WeeklyOverview = () => {
                   right: 5,
                   top: 5,
                   bottom: 15,
-                }} /* Reduced margins */
+                }}
+                onMouseMove={(e) => {
+                  if (!e?.activePayload) {
+                    setActiveLineType(null);
+                    setActiveCoordinate(null);
+                  }
+                }}
+                onMouseLeave={() => {
+                  setActiveLineType(null);
+                  setActiveCoordinate(null);
+                }}
               >
-                <CartesianGrid vertical={false} stroke="#F5F5F5" />
+                <CartesianGrid
+                  vertical={false}
+                  horizontal={true}
+                  stroke="#F5F5F5"
+                />
                 <XAxis
                   dataKey="name"
                   axisLine={false}
@@ -73,30 +157,42 @@ const WeeklyOverview = () => {
                   stroke="#787486"
                   fontSize={10}
                   padding={{ left: 10, right: 10 }}
+                  dy={10}
                 />
                 <YAxis hide={true} />
                 <Tooltip
-                  content={({ active, payload }) => {
-                    if (active && payload && payload.length) {
-                      return (
-                        <div className="custom-tooltip">
-                          {payload.map((entry, index) => (
-                            <div key={index}>{entry.value}</div>
-                          ))}
-                        </div>
-                      );
-                    }
-                    return null;
-                  }}
+                  content={
+                    <CustomTooltip
+                      chartType={activeLineType}
+                      coordinate={activeCoordinate}
+                    />
+                  }
+                  cursor={false}
                 />
+
                 <Line
                   type="monotone"
                   dataKey="line1"
                   stroke="#FF69B4"
                   strokeWidth={3}
                   dot={false}
-                  activeDot={{ r: 6, fill: "#FF69B4" }}
-                  isAnimationActive={false} // Add this
+                  isAnimationActive={false}
+                  activeDot={{
+                    r: 6,
+                    fill: "#FF69B4",
+                    onMouseOver: (props) => {
+                      setActiveLineType("line1");
+                      setActiveCoordinate({ x: props.cx, y: props.cy });
+                    },
+                    onMouseLeave: () => {
+                      setActiveLineType(null);
+                      setActiveCoordinate(null);
+                    },
+                  }}
+                  style={{
+                    opacity:
+                      !activeLineType || activeLineType === "line1" ? 1 : 0.3,
+                  }}
                 />
                 <Line
                   type="monotone"
@@ -104,13 +200,28 @@ const WeeklyOverview = () => {
                   stroke="#87CEEB"
                   strokeWidth={3}
                   dot={false}
-                  activeDot={{ r: 6, fill: "#87CEEB" }}
-                  isAnimationActive={false} // Add this
+                  isAnimationActive={false}
+                  activeDot={{
+                    r: 6,
+                    fill: "#87CEEB",
+                    onMouseOver: (props) => {
+                      setActiveLineType("line2");
+                      setActiveCoordinate({ x: props.cx, y: props.cy });
+                    },
+                    onMouseLeave: () => {
+                      setActiveLineType(null);
+                      setActiveCoordinate(null);
+                    },
+                  }}
+                  style={{
+                    opacity:
+                      !activeLineType || activeLineType === "line2" ? 1 : 0.3,
+                  }}
                 />
               </LineChart>
             </ResponsiveContainer>
           </div>
-        </div>
+        </div>{" "}
       </div>
     </>
   );
