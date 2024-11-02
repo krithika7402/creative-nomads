@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import chart from "../../assets/bar.svg";
 import {
   LineChart,
@@ -31,7 +32,7 @@ const CustomTooltip = ({ active, payload, chartType, coordinate }) => {
         boxShadow: "0 4px 20px rgba(0, 0, 0, 0.1)",
         position: "absolute",
         left: coordinate?.x || 0,
-        top: (isTopLine ? coordinate?.y - 50 : coordinate?.y + 20) || 0,
+        top: (isTopLine ? coordinate?.y - 40 : coordinate?.y + 20) || 0,
         transform: "translateX(-50%)",
         pointerEvents: "none",
       }}
@@ -178,8 +179,10 @@ const WeeklyOverview = () => {
                   dot={false}
                   isAnimationActive={false}
                   activeDot={{
-                    r: 6,
-                    fill: "#FF69B4",
+                    r: 5, 
+                    fill: "white",
+                    stroke: "#FF69B4",
+                    strokeWidth: 2,
                     onMouseOver: (props) => {
                       setActiveLineType("line1");
                       setActiveCoordinate({ x: props.cx, y: props.cy });
@@ -190,10 +193,14 @@ const WeeklyOverview = () => {
                     },
                   }}
                   style={{
-                    opacity:
-                      !activeLineType || activeLineType === "line1" ? 1 : 0.3,
+                    filter:
+                      activeLineType === "line1"
+                        ? "drop-shadow(0 6px 6px rgba(255, 105, 180, 0.4))"
+                        : "none",
+                    transition: "filter 0.3s ease",
                   }}
                 />
+
                 <Line
                   type="monotone"
                   dataKey="line2"
@@ -202,8 +209,10 @@ const WeeklyOverview = () => {
                   dot={false}
                   isAnimationActive={false}
                   activeDot={{
-                    r: 6,
-                    fill: "#87CEEB",
+                    r: 5,
+                    fill: "white",
+                    stroke: "#87CEEB", 
+                    strokeWidth: 2,
                     onMouseOver: (props) => {
                       setActiveLineType("line2");
                       setActiveCoordinate({ x: props.cx, y: props.cy });
@@ -214,8 +223,10 @@ const WeeklyOverview = () => {
                     },
                   }}
                   style={{
-                    opacity:
-                      !activeLineType || activeLineType === "line2" ? 1 : 0.3,
+                    filter:
+                      activeLineType === "line2"
+                        ? "drop-shadow(0 4px 6px rgba(135, 206, 235, 0.6))"
+                        : "none",
                   }}
                 />
               </LineChart>
