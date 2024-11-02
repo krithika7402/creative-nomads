@@ -26,7 +26,7 @@ const Notes = () => {
       <div className="note-footer">
         <span className="date">21 May, 2024</span>
         <button className="more-button">
-          <ChevronRight size={20} color="#7978CB" />
+          <ChevronRight size={20} color="#7978CB" strokeWidth={3} />
         </button>
       </div>
     </div>
@@ -45,7 +45,7 @@ const Notes = () => {
       <div className="note-footer">
         <span className="date">21 May, 2024</span>
         <button className="more-button">
-          <ChevronRight size={20} color="#7978CB" />
+          <ChevronRight size={20} color="#7978CB" strokeWidth={3} />
         </button>
       </div>
     </div>
@@ -55,19 +55,26 @@ const Notes = () => {
     <div className="note-card">
       <h3>Auroras and Sad Prose</h3>
       <div className="note-content">
-       Tears fall like rain on a lonely street<br/>
-       Heart heavy with sorrow, no solace to meet<br/>
-       Memories of joy now turned to dust<br/>
-       In the shadows of sadness, I place my trust<br/>
-       <br/>
-       Each note a reminder of what used to be<br/>
-       A melody of pain, a symphony for me<br/>
-       Lost in the darkness, searching for light<br/>
+        Tears fall like rain on a lonely street
+        <br />
+        Heart heavy with sorrow, no solace to meet
+        <br />
+        Memories of joy now turned to dust
+        <br />
+        In the shadows of sadness, I place my trust
+        <br />
+        <br />
+        Each note a reminder of what used to be
+        <br />
+        A melody of pain, a symphony for me
+        <br />
+        Lost in the darkness, searching for light
+        <br />
       </div>
       <div className="note-footer">
         <span className="date">21 May, 2024</span>
         <button className="more-button">
-          <ChevronRight size={20} color="#7978CB" />
+          <ChevronRight size={20} color="#7978CB" strokeWidth={3} />
         </button>
       </div>
     </div>
@@ -79,10 +86,10 @@ const Notes = () => {
         <h2>Notes</h2>
         <div className="header-buttons">
           <button className="add-button">
-            <Plus size={28} color="#49CDF9" />
+            <Plus size={28} color="#49CDF9" strokeWidth={3} />
           </button>
           <button className="more-button">
-            <ChevronRight size={28} color="#7B68EE" />
+            <ChevronRight size={28} color="#7B68EE" strokeWidth={3} />
           </button>
         </div>
       </div>
