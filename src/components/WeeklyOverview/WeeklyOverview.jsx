@@ -1,4 +1,4 @@
-import { BookOpen, BarChart3 } from "lucide-react";
+import { BarChart3 } from "lucide-react";
 import {
   LineChart,
   Line,
@@ -9,6 +9,8 @@ import {
   Tooltip,
 } from "recharts";
 import "./WeeklyOverview.css";
+import arrow from "../../assets/arrow.svg";
+import book from "../../assets/book.svg";
 
 const WeeklyOverview = () => {
   const data = [
@@ -20,21 +22,22 @@ const WeeklyOverview = () => {
     { name: "Sat", line1: 35, line2: 25 },
   ];
 
-  return (<>
-    <div className="weekly-overview-container">
-      <div className="header-section">
-        <h3>Weekly Overview</h3>
-        <button className="chart-button">
-          <BarChart3 size={20} color="#FF69B4" />
-        </button>
-      </div>
+  return (
+    <>
+      <div className="weekly-overview-container">
+        <div className="header-section">
+          <h3>Weekly Overview</h3>
+          <button className="chart-button">
+            <BarChart3 size={20} color="#FF69B4" />
+          </button>
+        </div>
 
         <div className="content-wrapper">
           <div className="stats-section">
             <div className="number-stats">
               <h2>20</h2>
               <span className="percentage-increase">
-                <span className="triangle">▲</span>
+                <img src={arrow} alt="triangle" />
                 +2.45%
               </span>
             </div>
@@ -46,7 +49,7 @@ const WeeklyOverview = () => {
             </div>
 
             <button className="open-tasks-button">
-              <BookOpen size={16} />
+              <img src={book} alt="book"/>
               <span>OPEN TASKS</span>
             </button>
           </div>

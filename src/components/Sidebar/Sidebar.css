@@ -1,5 +1,5 @@
 .sidebar {
-    width: 14.0625rem; /* 225px */
+    width: 200px;
     height: 100vh;
     background: white;
     padding: 0 1.5rem; /* 24px */
@@ -22,16 +22,16 @@
 .menu-item {
     display: flex;
     align-items: center;
-    padding: 0.75rem 1rem; /* 12px 16px */
-    gap: 0.75rem; /* 12px */
-    border-radius: 0.75rem; /* 12px */
+    padding: 0.55rem 1rem; /* 12px 16px */
+    gap: 8px;
+    border-radius: 0.7rem; /* 12px */
     cursor: pointer;
     color: #787486;
     transition: all 0.3s ease;
 }
 
 .menu-item span {
-    font-size: 1rem; /* 16px */
+    font-size: 0.9rem; /* 16px */
     font-weight: 500;
 }
 
@@ -51,7 +51,7 @@
 .sidebar-divider {
     height: 0.0625rem; /* 1px */
     background-color: #E6E4F0;
-    margin: 1.5rem 0; /* 24px 0 */
+    margin: 1.25rem 0; /* 24px 0 */
     width: 100%;
 }
 
