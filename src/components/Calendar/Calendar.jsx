@@ -158,6 +158,17 @@ const Calendar = () => {
                   {task.progress && (
                     <span className="task-progress">{task.progress}</span>
                   )}
+                  <div className="task-actions">
+                    <button>
+                      <Pencil size={18} color="#76BBFF" />
+                    </button>
+                    <button>
+                      <Trash2 size={18} color="#FF6B6B" />
+                    </button>
+                    <button>
+                      <MoreHorizontal size={18} color="#7978CB" />
+                    </button>
+                  </div>
                 </div>
 
                 {task.subtasks && (
@@ -192,17 +203,6 @@ const Calendar = () => {
                         {tag.text}
                       </span>
                     ))}
-                  </div>
-                  <div className="task-actions">
-                    <button>
-                      <Pencil size={16} color="#76BBFF" />
-                    </button>
-                    <button>
-                      <Trash2 size={16} color="#FF6B6B" />
-                    </button>
-                    <button>
-                      <MoreHorizontal size={16} color="#7978CB" />
-                    </button>
                   </div>
                 </div>
               </div>
