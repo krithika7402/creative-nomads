@@ -1,6 +1,6 @@
 // Calendar.jsx
 import './Calendar.css'
-import { ChevronRight, Plus, Pencil, Trash2, MoreHorizontal } from 'lucide-react';
+import { ChevronRight, Plus, Pencil, Trash2, MoreHorizontal, Bold } from 'lucide-react';
 import tag from "../../assets/tag.svg";
 const Calendar = () => {
   const dates = [
@@ -115,10 +115,10 @@ const Calendar = () => {
           <h3>Tasks for the day</h3>
           <div className="header-buttons">
             <button className="add-button">
-              <Plus size={24} color="#fff" />
+              <Plus size={24} color="#49CDF9" fontWeight={Bold}/>
             </button>
             <button className="more-button">
-              <ChevronRight size={24} color="#7978CB" />
+              <ChevronRight size={24} color="#7978CB" fontWeight={Bold}/>
             </button>
           </div>
         </div>

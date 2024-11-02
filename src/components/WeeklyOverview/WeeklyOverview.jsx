@@ -1,4 +1,4 @@
-import { BarChart3 } from "lucide-react";
+import chart from "../../assets/bar.svg"
 import {
   LineChart,
   Line,
@@ -28,7 +28,7 @@ const WeeklyOverview = () => {
         <div className="header-section">
           <h3>Weekly Overview</h3>
           <button className="chart-button">
-            <BarChart3 size={20} color="#FF69B4" />
+            <img src={chart} alt="chart"/>
           </button>
         </div>
 
