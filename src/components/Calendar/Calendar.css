@@ -71,10 +71,10 @@
 }
 
 .date-card .weekday {
-  font-size: 12px;
+  font-size: 13px;
   opacity: 0.8;
-  margin-top: 0px;
-  font-weight: 500;
+  margin-top: -2px;
+  font-weight: 450;
 }
 
 /* Status Cards */
