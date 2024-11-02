@@ -1,14 +1,11 @@
 // Calendar.jsx
 import "./Calendar.css";
-import {
-  ChevronRight,
-  Plus,
-  Pencil,
-  Trash2,
-  MoreHorizontal,
-  Bold,
-} from "lucide-react";
+import { ChevronRight, Plus, Bold } from "lucide-react";
 import tag from "../../assets/tag.svg";
+import pencil from "../../assets/task-actions/pencil.svg";
+import triple from "../../assets/task-actions/triple.svg";
+import del from "../../assets/task-actions/delete.svg";
+
 const Calendar = () => {
   const dates = [
     { day: 19, weekday: "Sun" },
@@ -155,22 +152,24 @@ const Calendar = () => {
                       {task.title}
                     </span>
                   </div>
-                  {task.progress && (
-                    <span className="task-progress">{task.progress}</span>
-                  )}
-                  <div className="task-actions">
-                    <button>
-                      <Pencil size={18} color="#76BBFF" />
-                    </button>
-                    <button>
-                      <Trash2 size={18} color="#FF6B6B" />
-                    </button>
-                    <button>
-                      <MoreHorizontal size={18} color="#7978CB" />
-                    </button>
+
+                  <div className="task-right">
+                    {task.progress && (
+                      <span className="task-progress">{task.progress}</span>
+                    )}
+                    <div className={task.progress ? "raise-bottom task-actions" : "task-actions"}>
+                      <button>
+                        <img src={pencil} alt="pencil" />
+                      </button>
+                      <button>
+                        <img src={del} alt="delete" />
+                      </button>
+                      <button>
+                        <img src={triple} alt="triple" />
+                      </button>
+                    </div>
                   </div>
                 </div>
-
                 {task.subtasks && (
                   <div className="subtasks">
                     {task.subtasks.map((subtask, index) => (
