@@ -106,14 +106,27 @@
 
 /* Tasks Section */
 .tasks-section {
-  margin-top: 24px;
+  padding-top: 0.5rem;
+  position: relative; /* Added for pseudo-element positioning */
   line-height: 0.5;
+}
+
+.tasks-section::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: #e6e6e6; /* Light grey color for the divider */
 }
 
 .tasks-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-bottom: 0.15rem;
+
 }
 
 .tasks-header h3 {

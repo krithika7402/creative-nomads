@@ -79,10 +79,10 @@ const Notes = () => {
         <h2>Notes</h2>
         <div className="header-buttons">
           <button className="add-button">
-            <Plus size={24} color="#fff" />
+            <Plus size={28} color="#49CDF9" />
           </button>
           <button className="more-button">
-            <ChevronRight size={24} color="#7978CB" />
+            <ChevronRight size={28} color="#7B68EE" />
           </button>
         </div>
       </div>
