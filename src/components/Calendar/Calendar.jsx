@@ -1,7 +1,7 @@
 // Calendar.jsx
 import './Calendar.css'
 import { ChevronRight, Plus, Pencil, Trash2, MoreHorizontal } from 'lucide-react';
-
+import tag from "../../assets/tag.svg";
 const Calendar = () => {
   const dates = [
     { day: 19, weekday: 'Sun' },
@@ -14,9 +14,9 @@ const Calendar = () => {
   ];
 
   const statusCards = [
-    { title: 'To-Do', count: '20', color: '#E2F5FF', textColor: '#76BBFF' },
-    { title: 'In-Progress', count: '15', color: '#E9E7FF', textColor: '#7978CB' },
-    { title: 'Complete', count: '03', color: '#DFF9E3', textColor: '#4ADE80' }
+    { title: 'To-Do', count: '20', color: '#B2E6F84D', textColor: '#49CCF9' },
+    { title: 'In-Progress', count: '15', color: '#7B68EE1A', textColor: '#7B68EE' },
+    { title: 'Complete', count: '03', color: '#00B8841A', textColor: '#00B884' }
   ];
 
   const tasks = [
@@ -29,8 +29,8 @@ const Calendar = () => {
         { text: "Donate Rs. 500 to the charity", completed: true }
       ],
       tags: [
-        { text: "Donations", color: "#FFE4B5" },
-        { text: "Social", color: "#DFF9E3" }
+        { text: "Donations", backgroundColor: "#FFC8001A", color: "#FFC800" },
+        { text: "Social", backgroundColor: "#00B88433", color: "#00B884" }
       ],
       progress: "2/2 Completed"
     },
@@ -44,8 +44,8 @@ const Calendar = () => {
         { text: "Reach 400", completed: false }
       ],
       tags: [
-        { text: "Sport", color: "#E9E7FF" },
-        { text: "Selfcare", color: "#FFE4EC" }
+        { text: "Sport", backgroundColor: "#E9E7FF", color: "#7B68EE" },
+        { text: "Selfcare", backgroundColor: "#FFE4EC", color: "#FD71AF" }
       ],
       progress: "1/3 Completed"
     },
@@ -54,8 +54,8 @@ const Calendar = () => {
       title: "Buy new headset",
       completed: true,
       tags: [
-        { text: "Shopping", color: "#E9E7FF" },
-        { text: "Set-up", color: "#DFF9E3" }
+        { text: "Shopping", backgroundColor: "#E9E7FF", color: "#7B68EE" },
+        { text: "Set-up", backgroundColor: "#DFF9E3", color: "#00B884" }
       ]
     },
     {
@@ -63,7 +63,7 @@ const Calendar = () => {
       title: "clean the room",
       completed: false,
       tags: [
-        { text: "Selfcare", color: "#E9E7FF" }
+        { text: "Selfcare", backgroundColor: "#E9E7FF", color: "#7B68EE" },
       ]
     }
   ];
@@ -162,11 +162,12 @@ const Calendar = () => {
 
                 <div className="task-footer">
                   <div className="task-tags">
+                    <img src={tag} alt="tag" className='tag-logo' />
                     {task.tags.map((tag, index) => (
                       <span 
                         key={index} 
                         className="tag"
-                        style={{ backgroundColor: tag.color }}
+                        style={{ backgroundColor: tag.backgroundColor, color: tag.color }}
                       >
                         {tag.text}
                       </span>
